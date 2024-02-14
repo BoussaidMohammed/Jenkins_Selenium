@@ -22,10 +22,7 @@ public class StepDefinitionForCart extends CucumberBaseTest {
     @Before
     public void initiateDriver(){
         setupDriver();
-        navbar = new Navbar();
-        header = new HeaderPage();
-        cart = new CartPage();
-        landingPage = new LandingPage();
+        pageInstantiation();
         landingPage.waitLoading();
         landingPage.clickCoockiesButton();
         landingPage.closeSubscribePopupWindow();
@@ -33,7 +30,7 @@ public class StepDefinitionForCart extends CucumberBaseTest {
 
     @Given("from the landing page")
     public void from_the_landing_page() {
-        //always on the landing page.
+        //already at the landing page.
     }
 
     @Given("^navigate To (.+) cafe catalogue$")
@@ -46,8 +43,6 @@ public class StepDefinitionForCart extends CucumberBaseTest {
             navbar.cafeVertuoCatalogue();
         }*/
         navbar.cafeCatalogue(type);
-        cafeCatalogue = new CafeCatalogue();
-
     }
 
     @When("^shopping the (.+) cafe  with quantity of (.+)$")
@@ -60,13 +55,11 @@ public class StepDefinitionForCart extends CucumberBaseTest {
     public void navigateToMachineCatalogue(String type){
         navbar.machineMenu();
         navbar.machineCatalogue(type);
-        machineCatalogue = new MachineCatalogue();
     }
 
     @And("^shopping the (.+) cafe capsule with (.+)$")
     public void shoppingACafeMachine(String machine, int quantity){
         machineCatalogue.pdpOfProduct(machine);
-        machineProductDetailPage = new ProductDetailPage();
         machineProductDetailPage.addProductToCart(quantity);
     }
 
@@ -80,10 +73,21 @@ public class StepDefinitionForCart extends CucumberBaseTest {
         Assert.assertTrue(isCafeExistProductExistInCart);
     }
 
+    protected void pageInstantiation() {
+        navbar = new Navbar();
+        header = new HeaderPage();
+        cart = new CartPage();
+        landingPage = new LandingPage();
+        cafeCatalogue = new CafeCatalogue();
+        machineCatalogue = new MachineCatalogue();
+        machineProductDetailPage = new ProductDetailPage();
+    }
+
     @After
     public void destruct(){
         tearDown();
     }
+
 
 
 

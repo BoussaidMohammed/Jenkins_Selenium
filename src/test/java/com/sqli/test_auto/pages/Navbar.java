@@ -8,18 +8,10 @@ import org.openqa.selenium.support.FindBy;
 public class Navbar extends BasePage{
     public static final String CAFE_MENU_LINK_LOCATOR = "//a[contains(@href, 'cafe.html')]";
     public static final String MACHINE_MENU_LINK_LOCATOR = "//a[contains(@href, 'machines.html')]";
-   /* public static final String CAFE_ORIGINAL_CATALOGUE_LINK_LOCATOR = "//a[contains(@href, 'cafe/original.html')]";
-    public static final String CAFE_VERTUO_CATALOGUE_LINK_LOCATOR = "//a[contains(@href, 'cafe/vertuo.html')]";*/
     @FindBy(xpath = CAFE_MENU_LINK_LOCATOR)
     private WebElement cafeMenuLink;
     @FindBy(xpath = MACHINE_MENU_LINK_LOCATOR)
     private WebElement machineMenuLink;
-   /* @FindBy(xpath = CAFE_ORIGINAL_CATALOGUE_LINK_LOCATOR)
-    private WebElement cafeOriginalLink;
-    @FindBy(xpath = CAFE_VERTUO_CATALOGUE_LINK_LOCATOR)*/
-    private WebElement cafeVertuoLink;
-    @FindBy(xpath = "")
-    private WebElement machineOriginalLink;
 
     public void cafeMenu(){
         hoverOnElement(cafeMenuLink);
@@ -38,16 +30,5 @@ public class Navbar extends BasePage{
         WebElement machineCatalogueType = driver.findElement(By.xpath("//a[contains(@href, 'machines/"+type+".html')]"));
         clickOn(machineCatalogueType);
     }
-
-    /*public void cafeOriginalCatalogue() {
-        cafeOriginalLink.click();
-        waitLoading();
-    }
-
-    public void cafeVertuoCatalogue() {
-        cafeVertuoLink.click();
-        waitLoading();
-    }*/
-
 
 }

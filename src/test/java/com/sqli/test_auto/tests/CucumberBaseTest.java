@@ -18,6 +18,7 @@ public class CucumberBaseTest {
     public void setupDriver(){
         System.setProperty("webdriver.chrome.driver", "drivers\\chromedriver.exe");
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
         driver.get(URL);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(2));
         setupDriverForPages();

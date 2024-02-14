@@ -1,6 +1,5 @@
 package com.sqli.test_auto.pages;
 
-import com.sqli.test_auto.utilities.Utilities;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
@@ -81,11 +80,11 @@ public class BasePage {
                 webDriver -> ((JavascriptExecutor) webDriver).executeScript("return document.readyState").equals("complete"));
     }
 
-    protected static void waitUntilIsPresentOf(By element) {
+    protected static void waitUntilPresentOf(By element) {
         wait.until(ExpectedConditions.presenceOfElementLocated(element));
     }
 
-    protected static void waitUntilTextOfElementChange(By element, String text) {
+    protected static void waitUntilTextOfElementNotToBe(By element, String text) {
         wait.until(ExpectedConditions.not(ExpectedConditions.textToBe(element, text)));
     }
 

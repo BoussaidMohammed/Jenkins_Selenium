@@ -23,6 +23,6 @@ public class HeaderPage extends BasePage{
 
     public void waitQtyCartCounterNumberToChangeItsValue(){
         String currentValue = cartQtyCounterNumber.getText();
-        waitUntilTextOfElementChange(By.xpath(CART_QTY_COUNTER_NUMBER_LOCATOR),currentValue);
+        waitUntilTextOfElementNotToBe(By.xpath(CART_QTY_COUNTER_NUMBER_LOCATOR),currentValue);
     }
 }

@@ -1,4 +1,4 @@
-pipline{
+pipeline{
     agent agent1
     stages {
         stage ('Compile Stage') {

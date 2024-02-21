@@ -4,7 +4,11 @@ import com.sqli.test_auto.pages.*;
 import com.sqli.test_auto.tests.CucumberBaseTest;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
+import io.cucumber.java.Scenario;
 import io.cucumber.java.en.Given;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+
 import static com.sqli.test_auto.utilities.Utilities.logger;
 import static com.sqli.test_auto.utilities.Utilities.pause;
 
@@ -30,7 +34,8 @@ public class EntryPointStep extends CucumberBaseTest {
     }
 
     @After
-    public void destruct(){
+    public void destruct(Scenario scenario){
+        failedScenarioScreenShot(scenario);
         tearDown();
     }
 

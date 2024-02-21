@@ -3,6 +3,9 @@ package com.sqli.test_auto.tests;
 import com.sqli.test_auto.pages.BasePage;
 import com.sqli.test_auto.utilities.Utilities;
 
+import io.cucumber.java.Scenario;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -43,9 +46,16 @@ public class CucumberBaseTest {
         BasePage.setDriver(driver);
     }
 
-
+    protected void failedScenarioScreenShot(Scenario scenario){
+        if(scenario.isFailed()){
+            TakesScreenshot takesScreenshot = (TakesScreenshot) driver;
+            byte[] screenshot = takesScreenshot.getScreenshotAs(OutputType.BYTES);
+            String screenshotName = scenario.getName() + "Failed screenshot";
+            scenario.attach(screenshot,"image/png", screenshotName);
+        }
+    }
     public void tearDown(){
-        Utilities.pause(4);
+        Utilities.pause(2);
         driver.quit();
     }
 }

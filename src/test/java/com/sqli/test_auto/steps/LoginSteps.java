@@ -21,7 +21,7 @@ public class LoginSteps {
 
     @When("^the user enters invalid (.+) or (.+)$")
     public void entrerCredentials(String username, String password){
-        logingPage = new LoginPage();
+       // logingPage = new LoginPage();
         logingPage.enterEmail(username);
         logingPage.enterPassword(password);
         Utilities.pause(5);

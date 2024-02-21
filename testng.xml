@@ -2,6 +2,6 @@
 <suite name="MultipleSuite">
     <suite-files>
         <suite-file path="cart-testng.xml"></suite-file>
-        <suite-file path="login-testing.xml"></suite-file>
+        <suite-file path="login-testng.xml"></suite-file>
     </suite-files>
 </suite>

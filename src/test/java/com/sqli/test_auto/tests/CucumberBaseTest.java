@@ -46,6 +46,6 @@ public class CucumberBaseTest {
 
     public void tearDown(){
         Utilities.pause(4);
-        driver.close();
+        driver.quit();
     }
 }

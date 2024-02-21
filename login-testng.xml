@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="login">
+    <test name="login-tests">
+        <classes>
+            <class name="com.sqli.test_auto.runners.LoginRunner"/>
+        </classes>
+    </test>
+</suite>

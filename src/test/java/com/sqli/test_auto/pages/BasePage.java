@@ -6,6 +6,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import static com.sqli.test_auto.utilities.Utilities.logger;
 
 import java.time.Duration;
 
@@ -20,13 +21,15 @@ public class BasePage {
     public static final String COOKIES_BUTTON = "//button[@id='onetrust-accept-btn-handler']";
     public static final String WAITING_ICON = "//div[@class='loading-mask']";
     public static final String SUBSCRIBE_POPUP_CLOSE_BUTTON = "//aside[contains(@class, ' email')]//button";
+    public static final String HIGHLIGHT_BANNER_LOCATOR = "//div[@class = 'highlight-banner top-banner']";
     @FindBy(xpath = COOKIES_BUTTON)
     private WebElement coockiesButton;
     @FindBy(xpath = WAITING_ICON)
     private WebElement waitedIcon;
     @FindBy(xpath = SUBSCRIBE_POPUP_CLOSE_BUTTON)
     private WebElement subscribePopupCloseButton;
-
+    @FindBy(xpath = HIGHLIGHT_BANNER_LOCATOR)
+    private WebElement highlightBanner;
 
     public BasePage(){
         PageFactory.initElements(driver, this);
@@ -42,6 +45,9 @@ public class BasePage {
 
     public void closeSubscribePopupWindow(){
         subscribePopupCloseButton.click();
+    }
+    public void hideHighlightBanner(){
+        hideElement(highlightBanner);
     }
 
     public static void setDriver(WebDriver webDriver){
@@ -89,8 +95,22 @@ public class BasePage {
     }
 
     protected void clickOn(WebElement element){
+        //wait element to be clickable
+        waitUntilTheElementIsClickable(element);
         element.click();
         waitLoading();
+    }
+
+    protected static void waitUntilTheElementIsClickable(WebElement element){
+        wait.until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    protected static void waitUntilPresenceOfElementLocated(By locator){
+        wait.until(ExpectedConditions.presenceOfElementLocated(locator));
+    }
+
+    protected static void hideElement(WebElement element){
+        javascriptExecutor.executeScript("arguments[0].style.display = 'none';",element);
     }
 
     /**********************************************************************************************************************/

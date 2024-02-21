@@ -18,6 +18,10 @@
         <maven.surefire.plugin.version>3.2.1</maven.surefire.plugin.version>
         <maven.compiler.source.version>8</maven.compiler.source.version>
         <maven.compiler.target.version>8</maven.compiler.target.version>
+        <login>login-testng.xml</login>
+        <cart>cart-testng.xml</cart>
+        <all>testng.xml</all>
+        <file>testing.xml</file>
     </properties>
 
     <dependencies>
@@ -77,14 +81,11 @@
             <version>2.13.0</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.slf4j/slf4j-api -->
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>1.7.36</version>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>1.2.6</version>
         </dependency>
-
-
     </dependencies>
 
 
@@ -106,7 +107,7 @@
                 <version>${maven.surefire.plugin.version}</version>
                 <configuration>
                     <suiteXmlFiles>
-                        <suiteXmlFile>testing.xml</suiteXmlFile>
+                        <suiteXmlFile>${file}</suiteXmlFile>
                     </suiteXmlFiles>
                 </configuration>
             </plugin>

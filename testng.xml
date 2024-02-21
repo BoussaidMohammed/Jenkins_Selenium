@@ -1,0 +1,7 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="MultipleSuite">
+    <suite-files>
+        <suite-file path="cart-testng.xml"></suite-file>
+        <suite-file path="login-testing.xml"></suite-file>
+    </suite-files>
+</suite>

@@ -1,10 +1,12 @@
 package com.sqli.test_auto.pages;
 
+import com.sqli.test_auto.tests.CucumberBaseTest;
 import com.sqli.test_auto.utilities.Utilities;
+import io.cucumber.java.After;
+import io.cucumber.java.Before;
+import io.cucumber.java.en.Given;
 import org.openqa.selenium.By;
-import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.FindBy;
 
 public class ProductListPage extends BasePage {
     protected WebElement productItem;
@@ -13,4 +15,6 @@ public class ProductListPage extends BasePage {
         productItem = driver.findElement(productItemXpath);
         hoverOnElement(productItem);
     }
+
+
 }

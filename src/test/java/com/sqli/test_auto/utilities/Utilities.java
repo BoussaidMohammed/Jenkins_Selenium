@@ -2,11 +2,17 @@ package com.sqli.test_auto.utilities;
 
 
 
+import com.sqli.test_auto.tests.CucumberBaseTest;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Properties;
 
 public class Utilities {
+
+    public static Logger logger = LoggerFactory.getLogger(Utilities.class);
 
     public static void main(String[] args) {
         System.out.println(getConfigProperty("url"));

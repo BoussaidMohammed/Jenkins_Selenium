@@ -2,6 +2,7 @@ package com.sqli.test_auto.pages;
 
 import com.sqli.test_auto.utilities.Utilities;
 import org.openqa.selenium.By;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -14,6 +15,7 @@ public class Navbar extends BasePage{
     private WebElement machineMenuLink;
 
     public void cafeMenu(){
+
         hoverOnElement(cafeMenuLink);
     }
 
@@ -23,7 +25,13 @@ public class Navbar extends BasePage{
 
     public void cafeCatalogue(String type){
         WebElement cafeCatalogueType = driver.findElement(By.xpath("//a[contains(@href, 'cafe/"+type+".html')]"));
-        clickOn(cafeCatalogueType);
+        try{
+            clickOn(cafeCatalogueType);
+        }catch(TimeoutException te){
+           cafeMenu();
+           cafeCatalogue(type);
+        }
+
     }
 
     public void machineCatalogue(String type){

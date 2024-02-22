@@ -2,7 +2,6 @@ package com.sqli.test_auto.utilities;
 
 
 
-import com.sqli.test_auto.tests.CucumberBaseTest;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -15,7 +14,7 @@ public class Utilities {
     public static Logger logger = LoggerFactory.getLogger(Utilities.class);
 
     public static void main(String[] args) {
-        System.out.println(getConfigProperty("url"));
+        System.out.println(getProperty("url"));
     }
     public static void pause(int timeoutInSeconds){
         try {
@@ -25,7 +24,7 @@ public class Utilities {
         }
     }
 
-    public static String getConfigProperty(String property) {
+    public static String getProperty(String property) {
         Properties properties = new Properties();
         try (FileInputStream fis = new FileInputStream("src/test/resources/config.properties")) {
             properties.load(fis);
@@ -33,6 +32,16 @@ public class Utilities {
             return propertyValue;
         } catch (IOException  e) {
             return null;
+        }
+    }
+
+    public static int getIntegerProperty(String property){
+        try{
+           return Integer.parseInt(getProperty(property));
+        }catch(NumberFormatException nfe){
+            nfe.printStackTrace();
+            logger.error(nfe.getMessage());
+            return 0;
         }
     }
 

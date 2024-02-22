@@ -6,14 +6,16 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import static com.sqli.test_auto.utilities.Utilities.logger;
+
+import static com.sqli.test_auto.utilities.Utilities.getIntegerProperty;
+import static com.sqli.test_auto.utilities.Utilities.getProperty;
 
 import java.time.Duration;
 
 public class BasePage {
     /*** different useful objects */
     protected static WebDriver driver;
-    private static final Duration TIMEOUT = Duration.ofSeconds(10);
+    private static final Duration TIMEOUT = Duration.ofSeconds(getIntegerProperty("timeout"));
     private static Actions actions;
     private static JavascriptExecutor javascriptExecutor;
     private static WebDriverWait wait;
@@ -66,6 +68,7 @@ public class BasePage {
     /*** Useful actions ***/
 
     protected static void hoverOnElement(WebElement element){
+        wait.until(ExpectedConditions.visibilityOf(element));
         actions.moveToElement(element).perform();
     }
 

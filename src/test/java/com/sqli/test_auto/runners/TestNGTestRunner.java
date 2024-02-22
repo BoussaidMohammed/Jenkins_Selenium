@@ -13,8 +13,8 @@ import java.util.Collection;
 import java.util.List;
 
 public class TestNGTestRunner extends AbstractTestNGCucumberTests {
-    public static final String reportOutputDirectory = getConfigProperty("cucumber.reportOutputDirectory");
-    public static final String projectName = getConfigProperty("project.name");
+    public static final String reportOutputDirectory = getProperty("cucumber.reportOutputDirectory");
+    public static final String projectName = getProperty("project.name");
 
     @AfterSuite
     @Override

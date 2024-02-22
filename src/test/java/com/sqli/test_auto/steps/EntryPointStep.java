@@ -24,13 +24,13 @@ public class EntryPointStep extends CucumberBaseTest {
         landingPage.waitLoading();
         landingPage.clickCoockiesButton();
         landingPage.closeSubscribePopupWindow();
-        pause(2);
+        //pause(2);
     }
 
     @Given("from the landing page")
     public void from_the_landing_page() {
         //already at the landing page.
-        logger.warn("No landing page");
+        logger.warn("You see this message because the logger is doing its job");
     }
 
     @After

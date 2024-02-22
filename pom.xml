@@ -21,7 +21,7 @@
         <login>login-testng.xml</login>
         <cart>cart-testng.xml</cart>
         <all>testng.xml</all>
-        <file>testing.xml</file>
+        <file>testng.xml</file>
     </properties>
 
     <dependencies>
